@@ -1,5 +1,5 @@
-export default async function fetchData(query :string) {
-    const response = await fetch(`https://api.spoonacular.com/recipes/random?number=10&apiKey=${query}`);  
-    const data = await response.json();
-    return data;
+export default async function fetchRecipe(meal:string) {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`)
+    const data = await response.json()
+    return data
 }

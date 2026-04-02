@@ -1,31 +1,42 @@
 import { Link } from "react-router-dom";
-import { Heart, UserCircle, MenuIcon } from "lucide-react";
+import { Heart, UserCircle } from "lucide-react";
 import SearchBar from "./searchBar";
 
 export default function NavBar() {
   return (
-    <nav className="bg-white text-black p-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-6">
-          <Link to="/" className="text-lg font-extrabold hover:text-orange-500 transition-colors duration-300">
+    <nav className="py-3 max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="flex flex-col gap-4  bg-white p-1 text-black md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          <Link
+            to="/"
+            className="text-lg font-extrabold hover:text-orange-500 transition-colors duration-300"
+          >
             Saffront & Sage
           </Link>
-          <Link to="/" className="text-4xs font-medium text-gray-600 hover:text-orange-500 transition-colors duration-300 hover:underline hover:underline-offset-4">
+          <Link
+            to="/"
+            className="text-sm font-medium text-gray-600 hover:text-orange-500 transition-colors duration-300 hover:underline hover:underline-offset-4 sm:text-base"
+          >
             Home
           </Link>
-          <Link to="/favorites" className="text-4xs font-medium text-gray-600 hover:text-orange-500 transition-colors duration-300 hover:underline hover:underline-offset-4">
+          <Link
+            to="/favorites"
+            className="text-sm font-medium text-gray-600 hover:text-orange-500 transition-colors duration-300 hover:underline hover:underline-offset-4 sm:text-base"
+          >
             Favorites
           </Link>
         </div>
 
-        <div className="flex items-center space-x-4">   
-         <SearchBar />
-          <Link to="/favorites" className="hover:text-gray-300">
-            <Heart size={24} fill="#00023" />
-          </Link>
-          <Link to="/user" className="hover:text-gray-300">
-            <UserCircle size={24} />
-          </Link>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+          <SearchBar />
+          <div className="flex items-center gap-4">
+            <Link to="/favorites" className="hover:text-gray-300">
+              <Heart size={24} fill="#00023" />
+            </Link>
+            <Link to="/user" className="hover:text-gray-300">
+              <UserCircle size={24} />
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
