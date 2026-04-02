@@ -1,8 +1,14 @@
+import ExploreBar from "../components/ExploreBar";
+
+
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl font-bold mb-4">Welcome to the Recipe App!</h1>
-      <p className="text-lg text-gray-600">Discover and share your favorite recipes.</p>
-    </div>
+    <main className="flex flex-col gap-4 my-4 mx-2">
+      <div className="flex flex-col gap-2  w-1/2">
+        <h3 className="text-2xs text-green-800 font-medium">CURATED FLAVORS</h3>
+        <h1 className="font-extrabold text-7xl">What are we <i className="font-medium text-yellow-700/90">Crafting</i>today?</h1>
+        <ExploreBar />
+      </div>
+    </main>
   );
-}   
+}
