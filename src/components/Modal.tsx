@@ -200,9 +200,9 @@ export default function RecipeModal({
                       <div className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 p-3">
                         <iframe
                           width="100%"
-                          height="315"
                           src={`https://www.youtube.com/embed/${recipe.strYoutube.split("v=")[1]}`}
                           title={recipe.strMeal}
+                          className="h-60 md:h-75 rounded-lg"
                         ></iframe>
                       </div>
                     
