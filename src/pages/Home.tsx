@@ -46,6 +46,10 @@ export default function Home() {
         </h1>
         <ExploreBar onExplore={handleExplore} />
       </div>
+
+       <div>
+        <h2 className="text-2xl font-bold text-amber-950">Category</h2>
+       </div>
       
         {isLoading && <Loader />}
         {isError && <p className="text-red-500 text-center p-3 border border-red-500 rounded-xl">An error occurred: {error.message}</p>}

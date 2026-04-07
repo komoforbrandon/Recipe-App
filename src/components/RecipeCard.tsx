@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   Globe,
   Heart,
+  Utensils,
 } from "lucide-react";
 import RecipeModal from "./Modal";
 
@@ -50,6 +51,12 @@ export default function RecipeCard({
       </div>
 
       <div className="p-4">
+        <div className="flex items-center gap-1 bg-red-200/30 rounded-full px-2 py-1 mb-2 w-fit">
+          <Utensils size={20} className="text-amber-800" />
+          <span className="text-[14px] font-medium text-amber-900/80">
+            {recipe.strCategory}
+          </span>
+        </div>
         <div className="flex justify-between space-y-2">
           <h2 className="text-lg font-bold text-amber-950">{recipe.strMeal}</h2>
           <p className="flex h-fit items-center rounded-2xl bg-amber-800/12 px-2 py-1 text-center text-sm text-amber-950">
