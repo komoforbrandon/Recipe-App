@@ -1,8 +1,15 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 
-export default function SearchBar() {
+type searchProp = {
+  onSearch: (term: string) => void;
+};
+export default function SearchBar({ onSearch }: searchProp) {
   const [search, setSearch] = useState("");
+
+  const handleSearch = () => {
+    onSearch(search);
+  };
 
   return (
     <div className="flex w-full items-center rounded-4xl bg-gray-100 p-3 sm:w-65">
@@ -10,6 +17,7 @@ export default function SearchBar() {
         size={22}
         color="gray"
         className="cursor-pointer hover:text-orange-500"
+        onClick={handleSearch}
       />
       <input
         type="text"

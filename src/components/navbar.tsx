@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Heart, UserCircle } from "lucide-react";
 import SearchBar from "./searchBar";
 
 export default function NavBar() {
+  const navigate = useNavigate();
+
+  const handleSearch = (searchTerm: string) => {
+    navigate(`/?q=${encodeURIComponent(searchTerm)}`);
+  };
+
   return (
     <nav className="py-3 max-w-7xl mx-auto px-4 sm:px-6">
       <div className="flex flex-col gap-4  bg-white p-1 text-black md:flex-row md:items-center md:justify-between">
@@ -28,7 +35,7 @@ export default function NavBar() {
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-          <SearchBar />
+          <SearchBar onSearch={handleSearch} />
           <div className="flex items-center gap-4">
             <Link to="/favorites" className="hover:text-gray-300">
               <Heart size={24} fill="#00023" />
