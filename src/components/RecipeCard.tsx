@@ -120,7 +120,7 @@ export default function RecipeCard({
         <img
           src={recipe.strMealThumb}
           alt={recipe.strMeal}
-          className="h-full w-full cursor-pointer object-cover object-center transition-transform duration-200 hover:scale-105"
+          className="h-full w-full cursor-pointer object-cover object-center transition-transform duration-200 hover:scale-105 aspect-3/2 md:aspect-4/3"
         />
       </div>
 
@@ -134,13 +134,13 @@ export default function RecipeCard({
         </div>
       </div>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <div className="w-full overflow-hidden rounded-4xl border border-amber-200/80 bg-linear-to-b from-amber-50 via-stone-50 to-white shadow-[0_24px_80px_rgba(69,26,3,0.22)]">
+        <div className="w-full overflow-hidden rounded-4xl border border-amber-800/12 bg-linear-to-b from-amber-800/20 via-stone-50 to-amber-600/25 shadow-[0_24px_80px_rgba(69,26,3,0.22)]">
           <div className="flex max-h-[calc(100vh-2rem)] flex-col overflow-hidden sm:max-h-[calc(100vh-4rem)]">
-            <div className="sticky top-0 z-10 border-b border-amber-200/80 bg-amber-50/95 px-4 py-4 backdrop-blur sm:px-6">
+            <div className="sticky top-0 z-10 border-b border-amber-900/10 bg-amber-200/45 px-4 py-4 backdrop-blur sm:px-6">
               <div className="flex items-start justify-between gap-4">
                 <div className="space-y-3">
                   <div className="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-[0.2em] text-amber-700 uppercase">
-                    <span className="rounded-full bg-amber-200/70 px-3 py-1 text-[11px]">
+                    <span className="rounded-full bg-amber-700/40 px-3 py-1 text-[11px]">
                       Recipe Details
                     </span>
                     {recipe.strCategory && (
@@ -184,13 +184,13 @@ export default function RecipeCard({
                     />
                   </div>
 
-                  <div className="rounded-3xl border border-amber-200/80 bg-white/90 p-5 shadow-sm">
+                  <div className="rounded-3xl border border-amber-800/10 bg-white/10 p-5 shadow-sm">
                     <h3 className="mb-3 text-lg font-bold text-amber-950">Instructions</h3>
                     <ol className="space-y-3">
                       {instructionSteps.map((step, index) => (
                         <li
                           key={index}
-                          className="flex gap-3 rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900/85 sm:text-[15px]"
+                          className="flex gap-3 rounded-2xl bg-amber-600/12 px-4 py-3 text-sm leading-6 text-black sm:text-[15px]"
                         >
                           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-900 text-xs font-bold text-amber-50">
                             {index + 1}
@@ -202,7 +202,7 @@ export default function RecipeCard({
                   </div>
                 </section>
 
-                <aside className="rounded-3xl border border-amber-200/80 bg-white/90 p-5 shadow-sm">
+                <aside className="rounded-3xl border border-amber-200/80 bg-300/20 p-5 shadow-sm sm:sticky h-fit">
                   <h3 className="mb-1 text-lg font-bold text-amber-950">Ingredients</h3>
                   <p className="mb-4 text-sm text-amber-900/65">
                     Everything you need to bring this dish together.
@@ -211,7 +211,7 @@ export default function RecipeCard({
                     {ingredients.map((item, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-3 rounded-2xl border border-amber-100 bg-amber-50/80 px-4 py-3 text-sm text-amber-950"
+                        className="flex items-start gap-3 rounded-2xl border border-amber-800/10 bg-amber-600/12 px-4 py-3 text-sm text-amber-950"
                       >
                         <LucideCircleCheckBig
                           size={18}
@@ -220,7 +220,7 @@ export default function RecipeCard({
                         <div className="space-y-0.5">
                           <p className="font-semibold">{item.ingredient}</p>
                           {item.measure && (
-                            <p className="text-xs font-medium tracking-wide text-amber-800/70 uppercase">
+                            <p className="text-xs font-medium tracking-wide text-amber-900 uppercase">
                               {item.measure}
                             </p>
                           )}

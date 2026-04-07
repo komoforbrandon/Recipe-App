@@ -34,13 +34,13 @@ export default function NavBar() {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-          <SearchBar onSearch={handleSearch} />
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 ">
+          <i className="hidden md:flex"><SearchBar onSearch={handleSearch} /></i> 
           <div className="flex items-center gap-4">
-            <Link to="/favorites" className="hover:text-gray-300">
+            <Link to="/favorites" className="hover:text-gray-300 hidden md:inline-flex">
               <Heart size={24} fill="#00023" />
             </Link>
-            <Link to="/user" className="hover:text-gray-300">
+            <Link to="/user" className="hover:text-gray-300 hidden md:inline-flex">
               <UserCircle size={24} />
             </Link>
           </div>
