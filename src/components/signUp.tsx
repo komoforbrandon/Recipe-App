@@ -20,7 +20,7 @@ export default function SignUp() {
           </p>
        
       </div>
-      <div className="bg-gray/10 border-white p-4 pb-12 rounded-[2.5rem] shadow-xl rotate-[-4deg] max-w-sm">
+      <div className="bg-gray/10 border-8 border-white p-4 pb-12 rounded-[2.5rem] shadow-xl rotate-[-4deg] max-w-sm">
         <img src={Imghero}
          alt="Newsletter Illustration" 
          className="w-64 h-64 object-cover object-center rounded-lg md:block" 

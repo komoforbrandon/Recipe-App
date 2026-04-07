@@ -2,7 +2,6 @@ import ExploreBar from "../components/ExploreBar";
 import Loader from "../components/Loader";
 import fetchRecipe from "../services/api";
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
 import RecipeCard from "../components/RecipeCard";
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -12,11 +11,11 @@ import SignUp from "../components/signUp";
 
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
 
+  const searchTerm = searchParams.get("q") || "";
 
   const categories = [
     "All",
@@ -33,13 +32,6 @@ export default function Home() {
     "Vegetarian",
     "Breakfast",
   ];
-
-  useEffect(() => {
-    const query = searchParams.get("q");
-    if (query) {
-      setSearchTerm(query);
-    }
-  }, [searchParams]);
 
   const handleExplore = (term: string) => {
     navigate(`/?q=${encodeURIComponent(term)}`);
