@@ -12,9 +12,27 @@ import type { Meal } from "../types/recipeType";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [focus, setFocus] = useState(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-   const { isFavorite, toggleFavorite } = useFavorites();
+  const { isFavorite, toggleFavorite } = useFavorites();
+
+
+  const categories = [
+    "All",
+    "Seafood",
+    "Dessert",
+    "Vegetarian",
+    "Beef",
+    "Pasta",
+    "Pork",
+    "Seafood",
+    "Side",
+    "Starter",
+    "Vegan",
+    "Vegetarian",
+    "Breakfast",
+  ];
 
   useEffect(() => {
     const query = searchParams.get("q");
@@ -49,6 +67,20 @@ export default function Home() {
 
        <div>
         <h2 className="text-2xl font-bold text-amber-950">Category</h2>
+        <div className="m-2 flex flex-row gap-3 overflow-x-auto md:overflow-visible h-fit">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => handleExplore(category === "All" ? " " : category)}
+              className="rounded-lg bg-amber-700/10 px-3 py-2 text-sm cursor-pointer font-medium text-amber-800 hover:bg-amber-700/20 transition-colors duration-200 h-fit whitespace-nowrap"
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+              aria-label={`Explore ${category} recipes`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
        </div>
       
         {isLoading && <Loader />}
