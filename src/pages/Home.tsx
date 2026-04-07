@@ -8,11 +8,11 @@ import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "../context/favorite-context";
 import type { Meal } from "../types/recipeType";
+import SignUp from "../components/signUp";
 
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [focus, setFocus] = useState(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
@@ -73,8 +73,6 @@ export default function Home() {
               key={category}
               onClick={() => handleExplore(category === "All" ? " " : category)}
               className="rounded-lg bg-amber-700/10 px-3 py-2 text-sm cursor-pointer font-medium text-amber-800 hover:bg-amber-700/20 transition-colors duration-200 h-fit whitespace-nowrap"
-              onFocus={() => setFocus(true)}
-              onBlur={() => setFocus(false)}
               aria-label={`Explore ${category} recipes`}
             >
               {category}
@@ -103,6 +101,7 @@ export default function Home() {
         {data?.meals === null && (
           <p className="text-gray-500 text-center p-3 border border-gray-300 rounded-xl">No recipes found for "{searchTerm}". Try searching for something else!</p>
         )}
+    <SignUp />
     </main>
   );
 }
