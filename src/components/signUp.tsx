@@ -2,7 +2,7 @@ import Imghero from "../assets/hero.png";
 
 export default function SignUp() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 bg-linear-to-t from-gray-100/70 via-black/10 to-gray-200/14 rounded-2xl shadow-2xl p-6">
+    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 bg-linear-to-t from-gray-100/70 via-black/10 to-gray-200/14 rounded-2xl shadow-2xl p-2 md:p-6">
       <div className="p-8 rounded-lg w-full ">
         <h2 className="font-extrabold text-3xl md:text-6xl">Join our culinary inner circle.</h2>
         <p className="text-gray-600 mt-2 mb-6">
@@ -23,7 +23,7 @@ export default function SignUp() {
       <div className="bg-gray/10 border-8 border-white p-4 pb-12 rounded-[2.5rem] shadow-xl rotate-[-4deg] max-w-sm">
         <img src={Imghero}
          alt="Newsletter Illustration" 
-         className="w-64 h-64 object-cover object-center rounded-lg md:block" 
+         className="w-45 h-45 object-cover object-center rounded-lg md:block md:h-64 md:w-64 mx-auto" 
         />
       </div>
     </div>
