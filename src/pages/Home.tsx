@@ -7,6 +7,7 @@ import RecipeCard from "../components/RecipeCard";
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "../context/favorite-context";
+import type { Meal } from "../types/recipeType";
 
 
 export default function Home() {
@@ -51,7 +52,7 @@ export default function Home() {
         {data && (
             <section className="mx-auto w-full max-w-7xl px-4 py-8">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-                {data?.meals?.map((recipe: any) => (
+                {data?.meals?.map((recipe: Meal) => (
                   <RecipeCard 
                     key={recipe.idMeal} 
                     recipe={recipe} 

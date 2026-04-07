@@ -9,8 +9,8 @@ export default function Favorite() {
       <section className="mt-10">
         <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-amber-950">
-              Favorite recipes
+            <h2 className="text-4xl font-bold text-amber-950">
+             My  Favorites
             </h2>
             <p className="text-sm text-amber-900/75">
               Keep your best discoveries close and ready for the next meal.
