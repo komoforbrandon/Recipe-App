@@ -190,17 +190,28 @@ export default function RecipeModal({
                         href={recipe.strYoutube}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex text-lg font-medium items-center gap-1 text-red-500 hover:text-red-600"
+                        className="inline-flex text-lg font-medium items-center gap-1 cursor-pointer text-red-500 hover:text-red-600"
                       >
                         <CirclePlay size={25} />
                         Watch on YouTube
                       </a>
                     </div>
+                   
+                      <div className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 p-3">
+                        <iframe
+                          width="100%"
+                          height="315"
+                          src={`https://www.youtube.com/embed/${recipe.strYoutube.split("v=")[1]}`}
+                          title={recipe.strMeal}
+                        ></iframe>
+                      </div>
+                    
                     <a
                       href={recipe.strSource}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium text-orange-500 hover:text-orange-600"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-orange-500 hover:text-orange-600 cursor-pointer"
+                      aria-label="View Original Recipe"
                     >
                       View Original Recipe
                       <ArrowRight size={16} className="text-orange-500" />

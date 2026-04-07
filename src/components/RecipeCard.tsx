@@ -4,6 +4,7 @@ import {
   Globe,
   Heart,
   Utensils,
+  ArrowRight,
 } from "lucide-react";
 import RecipeModal from "./Modal";
 
@@ -64,6 +65,15 @@ export default function RecipeCard({
             {recipe.strArea}
           </p>
         </div>
+        <a
+          href={recipe.strSource}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-1 inline-flex items-center gap-1 font-light text-amber-900 hover:text-amber-950 transition-colors duration-200"
+        >
+          <span className="text-[14px]">View Recipe Source</span>
+          <ArrowRight size={15} />
+        </a>
       </div>
       <RecipeModal isOpen={isOpen} onClose={() => setIsOpen(false)} recipe={recipe} />
     </article>
