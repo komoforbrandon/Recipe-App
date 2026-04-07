@@ -2,8 +2,8 @@ import Imghero from "../assets/hero.png";
 
 export default function SignUp() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 bg-linear-to-t from-gray-100/70 via-black/10 to-gray-200/14 rounded-2xl shadow-2xl p-2 md:p-6">
-      <div className="p-8 rounded-lg w-full ">
+    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 bg-linear-to-t from-gray-100/70 via-black/10 to-gray-200/14 rounded-2xl shadow-2xl p-4 md:p-6">
+      <div className="rounded-lg w-full p-2 md:p-6 flex flex-col justify-center">
         <h2 className="font-extrabold text-3xl md:text-6xl">Join our culinary inner circle.</h2>
         <p className="text-gray-600 mt-2 mb-6">
           Get exclusive recipes, seasonal guides, and chef interviews delivered straight to your inbox. Sign up now and start cooking with confidence!
