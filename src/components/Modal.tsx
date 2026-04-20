@@ -131,7 +131,7 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
                         </span>
                       </div>
 
-                      <div className="bg-yellow-300/40 rounded-md py-2 px-3">
+                      <div className="bg-yellow-300/40 rounded-md py-2 px-3" >
                         <LayoutGrid
                           size={18}
                           className="inline-block text-yellow-800 font-bold"
