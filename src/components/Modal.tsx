@@ -1,12 +1,19 @@
 import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
-import type {Meal, IngredientItem, ModalProps,RecipeModalProps } from "../types/recipeType";
+import type {
+  Meal,
+  IngredientItem,
+  ModalProps,
+  RecipeModalProps,
+} from "../types/recipeType";
 import {
   Globe,
-  X,
-  LucideCircleCheckBig,
   CirclePlay,
   ArrowRight,
+  ArrowLeft,
+  Heart,
+  LayoutGrid,
+  Circle,
 } from "lucide-react";
 
 function getIngredients(recipe: Meal) {
@@ -58,25 +65,17 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen || typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 overflow-y-auto px-3 py-4 sm:p-6">
-      <button
-        type="button"
-        className="absolute inset-0 bg-amber-950/60 backdrop-blur-sm"
-        aria-label="Close recipe modal"
-        onClick={onClose}
-      />
-      <div className="relative mx-auto flex min-h-full max-w-6xl items-center justify-center">
+    <div className="sticky inset-0 z-100 w-screen h-full bg-black/50 md:h-screen md:w-screen">
+      <div className="relative mx-auto bg-black/50 flex max-w-screen items-center justify-center md:h-fit md:w-full">
         {children}
       </div>
     </div>,
     document.body,
   );
 }
-export default function RecipeModal({
-  isOpen,
-  recipe,
-}: RecipeModalProps) {
+export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
+  const [color, setColor] = useState("gray");
 
   useEffect(() => {
     setIsModalOpen(isOpen);
@@ -85,139 +84,162 @@ export default function RecipeModal({
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <div className="w-full overflow-hidden rounded-4xl border border-amber-800/12 bg-linear-to-b from-amber-500/30 via-stone-50 to-amber-200/45 shadow-[0_24px_80px_rgba(69,26,3,0.22)]">
-          <div className="flex max-h-[calc(100vh-2rem)] flex-col overflow-hidden sm:max-h-[calc(100vh-4rem)]">
-            <div className="sticky top-0 z-10 border-b border-amber-900/10 bg-amber-200/45 px-4 py-4 backdrop-blur sm:px-6">
-              <div className="flex items-start justify-between gap-4">
-                <div className="space-y-3">
-                  <div className="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-[0.2em] text-amber-700 uppercase">
-                    <span className="rounded-full bg-amber-700/40 px-3 py-1 text-[11px]">
-                      Recipe Details
-                    </span>
-                    {recipe.strCategory && (
-                      <span className="rounded-full border border-amber-300/80 px-3 py-1 text-[11px] text-amber-800">
-                        {recipe.strCategory}
-                      </span>
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <h2 className="text-2xl font-black leading-tight text-amber-950 sm:text-3xl">
-                      {recipe.strMeal}
-                    </h2>
-                    <div className="flex flex-wrap items-center gap-2 text-sm text-amber-900/80">
-                      <span className="inline-flex items-center rounded-full bg-amber-800/12 px-3 py-1.5 font-medium text-amber-950">
-                        <Globe size={16} className="mr-2" />
-                        {recipe.strArea}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+        <div className="w-full overflow-hidden border border-amber-800/12 bg-white/85 shadow-[0_24px_80px_rgba(69,26,3,0.22)]">
+          <div className="flex max-h-screen flex-col overflow-hidden sm:max-h-screen md:h-screen w-full">
+            <button
+              type="button"
+              className="absolute z-10 top-2 left-2 p-1 md:p-2 shrink-0 flex items-center justify-center rounded-full border border-amber-200 bg-white/90 text-amber-900 shadow-sm transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+              onClick={() => setIsModalOpen(false)}
+              aria-label="Close recipe details"
+            >
+              <ArrowLeft size={25} />
+            </button>
 
-                <button
-                  type="button"
-                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-amber-200 bg-white/90 text-amber-900 shadow-sm transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
-                  onClick={() => setIsModalOpen(false)}
-                  aria-label="Close recipe details"
-                >
-                  <X size={20} />
-                </button>
-              </div>
+            <div className="absolute z-10 top-2 right-3 bg-white/90 p-1 flex rounded-full border border-amber-200/80 md:p-2 md:mr-4">
+              <Heart
+                size={25}
+                fill={color}
+                stroke={color}
+                onClick={() => setColor("red")}
+                className="active:bg-amber-700 focus:bg-red-600"
+              />
             </div>
 
-            <div className="overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">
-              <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-                <section className="space-y-5">
-                  <div className="overflow-hidden rounded-3xl border border-amber-200/80 bg-white shadow-sm">
+            <div className="overflow-y-auto sm:px-0 sm:py-0">
+              <div className="grid gap-5">
+                <section className="">
+                  <div className="relative overflow-hidden rounded-sm border-amber-200/80 bg-white shadow-sm">
                     <img
                       src={recipe.strMealThumb}
                       alt={recipe.strMeal}
-                      className="aspect-4/3 w-full object-cover object-center"
+                      className="aspect-3/2 w-full  object-cover object-center sm:aspect-3/1"
                     />
+                    <div className="absolute inset-0 bg-linear-to-t from-(--bg) via-slate-950/30 to-transparent " />
                   </div>
 
-                  <div className="rounded-3xl border border-amber-800/10 bg-white/10 p-5 shadow-sm">
-                    <h3 className="mb-3 text-lg font-bold text-amber-950">
-                      Instructions
-                    </h3>
-                    <ol className="space-y-3">
-                      {getInstructionSteps(recipe.strInstructions).map((step, index) => (
-                        <li
-                          key={index}
-                          className="flex gap-3 rounded-2xl bg-amber-600/12 px-4 py-3 text-sm leading-6 text-black sm:text-[15px]"
-                        >
-                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-900 text-xs font-bold text-amber-50">
-                            {index + 1}
+                  <div className="relative w-[98%] h-fit bg-white/95 rounded-2xl p-2 -mt-2 mx-auto shadow-sm sm:p-6">
+                    <div className="flex gap-2">
+                      <div className="bg-green-300/40 rounded-md py-2 px-3">
+                        <Globe
+                          size={18}
+                          className="inline-block text-green-950"
+                        />
+                        <span className="ml-1 text-xs font-medium tracking-wide text-amber-900 uppercase">
+                          {recipe.strArea}
+                        </span>
+                      </div>
+
+                      <div className="bg-yellow-300/40 rounded-md py-2 px-3">
+                        <LayoutGrid
+                          size={18}
+                          className="inline-block text-yellow-800"
+                        />
+                        <span className="ml-1 text-xs font-medium tracking-wide text-amber-900 uppercase">
+                          {recipe.strCategory}
+                        </span>
+                      </div>
+
+                      {recipe.strTags && (
+                        <div className="bg-gray-200/60 rounded-md py-2 px-3">
+                          <span className="ml-1 text-xs font-medium tracking-wide text-amber-900 uppercase">
+                            {recipe.strTags.split(",").join(", ")}
                           </span>
-                          <span>{step}</span>
-                        </li>
-                      ))}
-                    </ol>
+                        </div>
+                      )}
+                    </div>
+                    <h2 className="mt-2 text-3xl font-bold text-black">
+                      {recipe.strMeal}
+                    </h2>
+                    <p className="mt-1 text-lg text-gray-800">
+                      {recipe.strInstructions.length > 150
+                        ? `${recipe.strInstructions.slice(0, 150)}...`
+                        : recipe.strInstructions}
+                    </p>
                   </div>
                 </section>
+                <section className="grid gap-5 md:grid-cols-[1fr_2fr]">
+                  <aside className="rounded-3xl p-5 shadow-sm sm:sticky h-fit">
+                    <h3 className="mb-1 text-lg font-bold text-black">
+                      Ingredients
+                    </h3>
+                    <p className="mb-4 text-sm text-gray-800">
+                      Everything you need to bring this dish together.
+                    </p>
+                    <ul className="grid gap-3">
+                      {getIngredients(recipe).map((item, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-2 rounded-2xl border border-amber-800/10 bg-gray-200/60 px-3 py-2 text-sm text-amber-950"
+                        >
+                          <Circle
+                            size={18}
+                            className="mt-0.5 shrink-0 text-yellow-700"
+                          />
+                          <div className="space-y-0.5">
+                            <p className="font-semibold">{item.ingredient}</p>
+                            {item.measure && (
+                              <p className="text-xs font-medium tracking-wide text-gray-500/70 uppercase">
+                                {item.measure}
+                              </p>
+                            )}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-3 pt-2 border-t border-amber-800/10">
+                      <div className="text-xs text-amber-900/80 p-3 rounded-2xl bg-amber-800/12 text-center">
+                        <a
+                          href={recipe.strYoutube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex text-lg font-medium items-center gap-1 cursor-pointer text-red-500 hover:text-red-600"
+                        >
+                          <CirclePlay size={25} />
+                          Watch on YouTube
+                        </a>
+                      </div>
 
-                <aside className="rounded-3xl border border-amber-200/80 bg-300/20 p-5 shadow-sm sm:sticky h-fit">
-                  <h3 className="mb-1 text-lg font-bold text-amber-950">
-                    Ingredients
-                  </h3>
-                  <p className="mb-4 text-sm text-amber-900/65">
-                    Everything you need to bring this dish together.
-                  </p>
-                  <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
-                    {getIngredients(recipe).map((item, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-2 rounded-2xl border border-amber-800/10 bg-amber-600/12 px-3 py-2 text-sm text-amber-950"
-                      >
-                        <LucideCircleCheckBig
-                          size={18}
-                          className="mt-0.5 shrink-0 text-green-600"
-                        />
-                        <div className="space-y-0.5">
-                          <p className="font-semibold">{item.ingredient}</p>
-                          {item.measure && (
-                            <p className="text-xs font-medium tracking-wide text-amber-900 uppercase">
-                              {item.measure}
-                            </p>
-                          )}
-                        </div>
-                      </li>
-                    ))}
-                  
-                  </ul>
-                  <div className="mt-3 pt-2 border-t border-amber-800/10">
-                    <div className="text-xs text-amber-900/80 p-3 rounded-2xl bg-amber-800/12 text-center">
                       <a
-                        href={recipe.strYoutube}
+                        href={recipe.strSource}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex text-lg font-medium items-center gap-1 cursor-pointer text-red-500 hover:text-red-600"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-orange-500 hover:text-orange-600 cursor-pointer"
+                        aria-label="View Original Recipe"
                       >
-                        <CirclePlay size={25} />
-                        Watch on YouTube
+                        View Original Recipe
+                        <ArrowRight size={16} className="text-orange-500" />
                       </a>
                     </div>
-                   
-                      <div className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 p-3">
-                        <iframe
-                          width="100%"
-                          src={`https://www.youtube.com/embed/${recipe.strYoutube.split("v=")[1]}`}
-                          title={recipe.strMeal}
-                          className="h-60 md:h-75 rounded-lg"
-                        ></iframe>
-                      </div>
-                    
-                    <a
-                      href={recipe.strSource}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium text-orange-500 hover:text-orange-600 cursor-pointer"
-                      aria-label="View Original Recipe"
-                    >
-                      View Original Recipe
-                      <ArrowRight size={16} className="text-orange-500" />
-                    </a>
+                  </aside>
+                  <div className="rounded-3xl p-5 shadow-sm">
+                    <h3 className="mb-3 text-lg font-bold text-amber-950">
+                      Preparation Steps
+                    </h3>
+                    <ol className="space-y-3">
+                      {getInstructionSteps(recipe.strInstructions).map(
+                        (step, index) => (
+                          <li
+                            key={index}
+                            className="flex gap-3 rounded-2xl bg-amber-600/12 px-4 py-3 text-sm leading-6 text-black sm:text-[15px]"
+                          >
+                            <span className="flex py-2 px-3 h-fit w-fit shrink-0 items-center justify-center rounded-full bg-amber-900 text-md font-bold text-amber-50">
+                              0{index + 1}
+                            </span>
+                            <span>{step}</span>
+                          </li>
+                        ),
+                      )}
+                    </ol>
+                    <div className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 p-3">
+                      <iframe
+                        width="100%"
+                        src={`https://www.youtube.com/embed/${recipe.strYoutube.split("v=")[1]}`}
+                        title={recipe.strMeal}
+                        className="h-60 md:h-140 rounded-lg"
+                      ></iframe>
+                    </div>
                   </div>
-                </aside>
+                </section>
               </div>
             </div>
           </div>

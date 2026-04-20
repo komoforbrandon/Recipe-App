@@ -20,14 +20,11 @@ export default function Home() {
   const categories = [
     "All",
     "Seafood",
-    "Dessert",
     "Vegetarian",
     "Beef",
     "Pasta",
     "Pork",
     "Seafood",
-    "Side",
-    "Starter",
     "Vegan",
     "Vegetarian",
     "Breakfast",
@@ -58,13 +55,18 @@ export default function Home() {
       </div>
 
        <div>
+        <div className="flex items-center justify-between md:max-w-7xl">
         <h2 className="text-2xl font-bold text-amber-950">Category</h2>
+        <a href="#" className="text-sm text-amber-700 font-medium hover:underline">
+          View All
+        </a>
+        </div>
         <div className="m-2 flex flex-row gap-3 overflow-x-auto md:overflow-visible h-fit">
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <button
-              key={category}
+              key={index}
               onClick={() => handleExplore(category === "All" ? " " : category)}
-              className="rounded-lg bg-amber-700/10 px-3 py-2 text-sm cursor-pointer font-medium text-amber-800 hover:bg-amber-700/20 transition-colors duration-200 h-fit whitespace-nowrap"
+              className="rounded-sm bg-amber-700/10 px-4 py-2 text-sm cursor-pointer font-medium text-amber-800 hover:bg-amber-700/20 transition-colors duration-200 h-fit whitespace-nowrap focus:bg-yellow-800 focus:text-white/90"
               aria-label={`Explore ${category} recipes`}
             >
               {category}
