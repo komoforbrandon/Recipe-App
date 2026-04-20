@@ -134,7 +134,7 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
                       <div className="bg-yellow-300/40 rounded-md py-2 px-3">
                         <LayoutGrid
                           size={18}
-                          className="inline-block text-yellow-800"
+                          className="inline-block text-yellow-800 font-bold"
                         />
                         <span className="ml-1 text-xs font-medium tracking-wide text-amber-900 uppercase">
                           {recipe.strCategory}
