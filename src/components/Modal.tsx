@@ -81,6 +81,8 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
     setIsModalOpen(isOpen);
   }, [isOpen]);
 
+  const footeritems = ["Privacy Policy", "Terms of Service", "Contact Us"];
+
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
@@ -117,7 +119,7 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
                     <div className="absolute inset-0 bg-linear-to-t from-(--bg) via-slate-950/30 to-transparent " />
                   </div>
 
-                  <div className="relative w-[98%] h-fit bg-white/95 rounded-2xl p-2 -mt-2 mx-auto shadow-sm sm:p-6">
+                  <div className="relative w-[98%] h-fit bg-white/95 rounded-2xl px-2 py-3 -mt-2 mx-auto shadow-sm sm:p-6">
                     <div className="flex gap-2">
                       <div className="bg-green-300/40 rounded-md py-2 px-3">
                         <Globe
@@ -220,12 +222,12 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
                         (step, index) => (
                           <li
                             key={index}
-                            className="flex gap-3 rounded-2xl bg-amber-600/12 px-4 py-3 text-sm leading-6 text-black sm:text-[15px]"
+                            className="flex gap-3 rounded-2xl px-4 py-4 text-md my-2 leading-6 text-black sm:text-[21px]"
                           >
-                            <span className="flex py-2 px-3 h-fit w-fit shrink-0 items-center justify-center rounded-full bg-amber-900 text-md font-bold text-amber-50">
+                            <span className="flex p-2 h-fit w-fit shrink-0 items-center justify-center rounded-full border border-amber-800/10 bg-gray-300/70 text-amber-900 text-md font-bold md:p-3">
                               0{index + 1}
                             </span>
-                            <span>{step}</span>
+                            <span className="flex items-center">{step}</span>
                           </li>
                         ),
                       )}
@@ -240,6 +242,20 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
                     </div>
                   </div>
                 </section>
+                <footer className="mt-2 p-2 py-4 bg-gray-400/25">
+                  <h3 className="text-center font-bold text-gray-600 text-lg">Saffront & Sage</h3>
+                  <div className="flex gap-6 flex-row justify-center ">
+                   {footeritems.map((item, index) => (
+                    <a
+                      key={index}
+                      href="#"
+                      className="block text-center text-md text-gray-500 hover:text-gray-700"
+                    >
+                      {item}
+                    </a>
+                  ))}
+                  </div>
+                </footer>
               </div>
             </div>
           </div>
