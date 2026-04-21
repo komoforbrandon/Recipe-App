@@ -78,7 +78,7 @@ export default function Home() {
         {isLoading && <Loader />}
         {isError && <p className="text-red-500 text-center p-3 border border-red-500 rounded-xl">An error occurred: {error.message}</p>}
         {data && (
-            <section className="mx-auto w-full max-w-7xl px-4 py-8">
+            <section className="mx-auto w-full md:max-w-full px-4 py-8">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
                 {data?.meals?.map((recipe: Meal) => (
                   <RecipeCard 

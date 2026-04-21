@@ -65,7 +65,7 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen || typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="sticky inset-0 z-100 w-screen h-full bg-black/50 md:h-screen md:w-screen">
+    <div className="sticky inset-0 z-100 w-screen h-full bg-black/50 md:h-screen md:w-full">
       <div className="relative mx-auto bg-black/50 flex max-w-screen items-center justify-center md:h-fit md:w-full">
         {children}
       </div>
