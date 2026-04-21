@@ -11,7 +11,7 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="py-3 max-w-7xl mx-auto px-4 sm:px-6">
+    <nav className="py-3 max-full mx-auto px-4 sm:px-6">
       <div className="flex flex-col gap-4  bg-white p-1 text-black md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           <Link
