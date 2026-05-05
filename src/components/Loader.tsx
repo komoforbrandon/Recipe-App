@@ -2,7 +2,7 @@ export default function Loader() {
   const placeholders = Array.from({ length: 8 }, (_, index) => index);
 
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 py-8">
+    <section className="mx-auto w-full max-full px-4 py-8">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
         {placeholders.map((item) => (
           <article
