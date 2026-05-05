@@ -57,7 +57,11 @@ export default function Home() {
        <div>
         <div className="flex items-center justify-between md:w-full">
         <h2 className="text-2xl font-bold text-amber-950">Category</h2>
-        <a href="#" className="text-sm text-amber-700 font-medium hover:underline">
+        <a 
+        href="#" 
+        className="text-sm text-amber-700 font-medium hover:underline"
+        onClick={()=>handleExplore(" ")}
+        >
           View All
         </a>
         </div>
