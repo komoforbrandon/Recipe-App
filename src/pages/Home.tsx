@@ -39,9 +39,6 @@ export default function Home() {
     queryFn: () => fetchRecipe(searchTerm)
   })
 
-  console.log('This is the data fetch from the api',data)
-
-
   return (
     <main className="my-4 flex flex-col gap-4 sm:my-6">
       <div className="flex w-full max-w-3xl flex-col gap-3">
@@ -83,7 +80,7 @@ export default function Home() {
         {isError && <p className="text-red-500 text-center p-3 border border-red-500 rounded-xl">An error occurred: {error.message}</p>}
         {data && (
             <section className="mx-auto w-full md:max-w-full px-4 py-8">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
                 {data?.meals?.map((recipe: Meal) => (
                   <RecipeCard 
                     key={recipe.idMeal} 

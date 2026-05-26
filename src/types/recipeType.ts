@@ -12,9 +12,6 @@ export type Meal = {
   [key: `strMeasure${number}`]: string | null | undefined;
 };
 
-export type RecipeResponse = {
-  meals: Meal[] | null;
-};
 
 export type RecipeCardProps = {
   recipe: Meal;

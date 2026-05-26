@@ -64,8 +64,11 @@ export default function RecipeCard({
           <h2 className="text-lg font-bold text-amber-950">{recipe.strMeal}</h2>
         </div>
         <a
-          href={recipe.strSource}
-          target="_blank"
+          href={'#'}
+          onClick={(e) => {
+            e.preventDefault();
+            setIsOpen(true);
+          }}
           rel="noopener noreferrer"
           className="mt-1 inline-flex items-center gap-1 font-light text-amber-900 hover:text-amber-950 transition-colors duration-200"
         >
