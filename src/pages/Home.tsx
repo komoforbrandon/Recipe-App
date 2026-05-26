@@ -39,6 +39,8 @@ export default function Home() {
     queryFn: () => fetchRecipe(searchTerm)
   })
 
+  const data10 = data?.meals?.slice(0, 10) || [];
+
   return (
     <main className="my-4 flex flex-col gap-4 sm:my-6">
       <div className="flex w-full max-w-3xl flex-col gap-3">
@@ -67,7 +69,7 @@ export default function Home() {
             <button
               key={index}
               onClick={() => handleExplore(category === "All" ? " " : category)}
-              className="rounded-sm bg-amber-700/10 px-4 py-2 text-sm cursor-pointer font-medium text-amber-800 hover:bg-amber-700/20 transition-colors duration-200 h-fit whitespace-nowrap focus:bg-yellow-800 focus:text-white/90"
+              className="rounded-sm bg-gray-700/10 px-4 py-2 text-sm cursor-pointer font-medium text-gray-800 hover:bg-gray-700/20 transition-colors duration-200 h-fit whitespace-nowrap focus:bg-yellow-700 focus:text-white/90"
               aria-label={`Explore ${category} recipes`}
             >
               {category}
@@ -78,10 +80,10 @@ export default function Home() {
       
         {isLoading && <Loader />}
         {isError && <p className="text-red-500 text-center p-3 border border-red-500 rounded-xl">An error occurred: {error.message}</p>}
-        {data && (
+        {data10 && (
             <section className="mx-auto w-full md:max-w-full px-4 py-8">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
-                {data?.meals?.map((recipe: Meal) => (
+                {data10.map((recipe: Meal) => (
                   <RecipeCard 
                     key={recipe.idMeal} 
                     recipe={recipe} 

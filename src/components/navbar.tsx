@@ -13,22 +13,22 @@ export default function NavBar() {
   return (
     <nav className="py-3 max-full mx-auto px-4 sm:px-6">
       <div className="flex flex-col gap-4  bg-white p-1 text-black md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+        <div className="flex flex-wrap items-center gap-6 md:gap-10">
           <Link
             to="/"
-            className="text-lg font-extrabold hover:text-orange-500 transition-colors duration-300"
+            className="text-lg md:text-xl font-extrabold hover:text-orange-500 transition-colors duration-300"
           >
             Saffront & Sage
           </Link>
           <Link
             to="/"
-            className="text-sm font-medium text-gray-600 hover:text-orange-500 transition-colors duration-300 hover:underline hover:underline-offset-4 sm:text-base"
+            className="text-gray-700 uppercase font-bold hover:text-gray-900 focus:underline focus:text-amber-700 focus:ring-gray-400 focus:underline-offset-7 focus:decoration-3 transition-colors duration-600"
           >
             Home
           </Link>
           <Link
             to="/favorites"
-            className="text-sm font-medium text-gray-600 hover:text-orange-500 transition-colors duration-300 hover:underline hover:underline-offset-4 sm:text-base"
+            className="text-gray-700 uppercase font-bold hover:text-gray-900 focus:underline focus:text-amber-700 focus:ring-gray-400 focus:underline-offset-7 focus:decoration-3 transition-colors duration-600"
           >
             Favorites
           </Link>

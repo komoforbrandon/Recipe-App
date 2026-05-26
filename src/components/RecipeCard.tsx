@@ -1,6 +1,6 @@
 import type { RecipeCardProps } from "../types/recipeType";
 import { useState } from "react";
-import { Globe, Heart, Utensils, ArrowRight } from "lucide-react";
+import { Globe, Heart, ArrowRight } from "lucide-react";
 import RecipeModal from "./Modal";
 
 export default function RecipeCard({
@@ -11,7 +11,7 @@ export default function RecipeCard({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-amber-700/10 bg-amber-500/4 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl">
+    <article className="overflow-hidden rounded-2xl bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl">
       <div
         className="relative aspect-1 cursor-pointer"
         onClick={() => setIsOpen(true)}
@@ -42,22 +42,15 @@ export default function RecipeCard({
         <img
           src={recipe.strMealThumb}
           alt={recipe.strMeal}
-          className="h-full w-full cursor-pointer object-cover object-center transition-transform duration-200 hover:scale-105 aspect-3/2 md:aspect-4/3"
+          className="h-full w-full cursor-pointer object-cover object-center transition-transform duration-200 hover:scale-105 aspect-3/2 md:aspect-19/20"
         />
       </div>
 
-      <div className="p-4">
+      <div className="px-4 py-3 lg:px-6 lg:py-5">
         <article className="flex justify-between space-y-2">
-          <div className="flex items-center gap-1 bg-red-200/30 rounded-full px-2 py-1 mb-2 w-fit">
-            <Utensils size={20} className="text-amber-800" />
-            <span className="text-[14px] font-medium text-amber-900/80">
-              {recipe.strCategory}
+            <span className="text-[13px] font-medium text-gray-500/60 uppercase">
+              {recipe.strCategory} . 45 mins
             </span>
-          </div>
-          <p className="flex h-fit items-center rounded-2xl bg-amber-800/12 px-2 py-1 text-center text-sm text-amber-950">
-            <Globe size={18} color="rgb(69, 26, 3)" className="mr-1" />
-            {recipe.strArea}
-          </p>
         </article>
 
         <div className="flex justify-between space-y-2">
@@ -70,10 +63,13 @@ export default function RecipeCard({
             setIsOpen(true);
           }}
           rel="noopener noreferrer"
-          className="mt-1 inline-flex items-center gap-1 font-light text-amber-900 hover:text-amber-950 transition-colors duration-200"
+          className="mt-1 inline-flex items-center gap-1 w-full justify-between font-light text-gray-800/75 hover:text-amber-950 transition-colors duration-200"
         >
-          <span className="text-[14px]">View Recipe Source</span>
-          <ArrowRight size={15} />
+         <p className="flex items-center uppercase text-center text-sm text-gray-800/80">
+            <Globe size={20} color="gray" className="mr-1" />
+            {recipe.strArea}
+          </p>
+          <ArrowRight size={20} />
         </a>
       </div>
       <RecipeModal
