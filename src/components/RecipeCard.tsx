@@ -67,7 +67,7 @@ export default function RecipeCard({
         >
          <p className="flex items-center uppercase text-center text-sm text-gray-800/80">
             <Globe size={20} color="gray" className="mr-1" />
-            {recipe.strArea}
+            {recipe.strArea || 'N/A'}
           </p>
           <ArrowRight size={20} />
         </a>
