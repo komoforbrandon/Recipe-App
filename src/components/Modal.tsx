@@ -225,7 +225,7 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
                             className="flex gap-3 rounded-2xl px-4 py-4 text-md my-2 leading-6 text-black sm:text-[21px]"
                           >
                             <span className="flex p-2 h-fit w-fit shrink-0 items-center justify-center rounded-full border border-amber-800/10 bg-gray-300/70 text-amber-900 text-md font-bold md:p-3">
-                              0{index + 1}
+                             {index>10? `${index + 1}`: `0${index + 1}`}
                             </span>
                             <span className="flex items-center">{step}</span>
                           </li>
