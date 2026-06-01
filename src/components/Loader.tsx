@@ -1,5 +1,5 @@
 export default function Loader() {
-  const placeholders = Array.from({ length: 8 }, (_, index) => index);
+  const placeholders = Array.from({ length: 10 }, (_, index) => index);
 
   return (
     <section className="mx-auto w-full max-full px-4 py-8">
