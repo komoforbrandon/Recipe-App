@@ -39,7 +39,7 @@ export default function RecipeCard({
           />
         </button>
 
-        <img
+        <img 
           src={recipe.strMealThumb}
           alt={recipe.strMeal}
           className="h-full w-full cursor-pointer object-cover object-center transition-transform duration-200 hover:scale-105 aspect-3/2 md:aspect-19/20"
