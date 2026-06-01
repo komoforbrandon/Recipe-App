@@ -14,7 +14,7 @@ function App() {
         <div className="bg-white w-full">
           <NavBar />
         </div>
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto w-full md:max-w-full px-4 sm:px-8">
           <AppRouter />
         </div>
       </div>
