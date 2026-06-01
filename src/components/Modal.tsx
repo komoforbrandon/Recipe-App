@@ -86,11 +86,11 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <div className="w-full overflow-hidden border border-amber-800/12 bg-white/85 shadow-[0_24px_80px_rgba(69,26,3,0.22)]">
+        <div className="w-full overflow-hidden border border-amber-800/12 bg-gray-100 shadow-[0_24px_80px_rgba(69,26,3,0.22)]">
           <div className="flex max-h-screen flex-col overflow-hidden sm:max-h-screen md:h-screen w-full">
             <button
               type="button"
-              className="absolute z-10 top-2 left-2 p-1 md:p-2 shrink-0 flex items-center justify-center rounded-full border border-amber-200 bg-white/90 text-amber-900 shadow-sm transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+              className="absolute z-10 top-2 left-2 p-1 md:p-2 shrink-0 flex items-center justify-center rounded-full border border-gray-200 bg-white/90 text-black shadow-sm transition hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
               onClick={() => setIsModalOpen(false)}
               aria-label="Close recipe details"
             >
@@ -232,14 +232,6 @@ export default function RecipeModal({ isOpen, recipe }: RecipeModalProps) {
                         ),
                       )}
                     </ol>
-                    <div className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 p-3">
-                      <iframe
-                        width="100%"
-                        src={`https://www.youtube.com/embed/${recipe.strYoutube.split("v=")[1]}`}
-                        title={recipe.strMeal}
-                        className="h-60 md:h-140 rounded-lg"
-                      ></iframe>
-                    </div>
                   </div>
                 </section>
                 <footer className="mt-2 p-2 py-4 bg-gray-400/25">
